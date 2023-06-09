@@ -1,25 +1,15 @@
 import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProduct,
   removeSelectedProduct,
-  addToCart
 } from "../redux/actions/productsActions";
 const ProductDetails = () => {
   const { productId } = useParams();
   let product = useSelector((state) => state.product);
-  const { image, title, price, category, description } = product;
+  const { image, title, price, category, description, rating , id } = product;
   const dispatch = useDispatch();
-
-  // const fetchProductDetail = async (id) => {
-  //   const response = await axios
-  //     .get(`'https://fakestoreapi.com/products/${id}`)
-  //     .catch((err) => {
-  //       console.log("Err: ", err);
-  //     });
-  //   dispatch(selectedProduct(response.data));
-  // };
 
   useEffect(() => {
     if (productId && productId !== "") dispatch(fetchProduct(productId));
@@ -27,6 +17,10 @@ const ProductDetails = () => {
       dispatch(removeSelectedProduct());
     };
   }, [productId]);
+  const data = useSelector((state) => state.cartItems);
+  const quantity = data.cartItems.map((product) => product.quantity);
+
+
   return (
     <div className=" grid-container">
       {Object.keys(product).length === 0 ? (
@@ -44,10 +38,22 @@ const ProductDetails = () => {
                   <a className=" ">${price}</a>
                 </h2>
                 <h3 className=" ">{category}</h3>
+                <p>ratings: ⭐⭐⭐⭐{rating["rate"]}</p>
                 <p>{description}</p>
-                <div className=" " tabIndex="0">
-                
-                  <div className="visible content">Add to Cart</div>
+                <p>{quantity}jfkml</p>
+                <div key={id}>
+                  <Link to={`/product/checkout/${id}`}>
+                    <button
+                      style={{
+                        height: "50px",
+                        width: "100px",
+                        background: "grey",
+                        marginTop: "40px",
+                      }}
+                    >
+                      Buy now
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

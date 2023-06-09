@@ -4,8 +4,10 @@ import ProductListing from "./containers/ProductListing";
 import Header from "./containers/Header";
 import "./App.css";
 import ProductDetails from "./containers/ProductDetails";
-import Category from "./containers/Category";
+// import Category from "./containers/Category";
 import Cart from "./containers/Cart/Cart";
+import CheckOut from "./containers/CheckOut/CheckOut";
+import CartCheck from "./containers/CheckOut/CartCheck";
 
 function App() {
   return (
@@ -13,12 +15,12 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<ProductListing/>} />
-          <Route path="/product/:productId" element={<ProductDetails/>} />
-          <Route path="/category" element={<Category/>} />
-          <Route path="/cart" element={<Cart/>} />
-
-          
+          <Route path="/" element={<ProductListing />} />
+          {/* <Route path="/category" element={<Category />} /> */}
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/product/cart/checkout/:itemId" element={<CartCheck/>} />
+          <Route path="/product/:productId" element={<ProductDetails />} />
+          <Route path="/product/checkout/:productId/" element={<CheckOut />} />
 
 
           <Route>404 Not Found!</Route>

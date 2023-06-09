@@ -30,9 +30,65 @@ export const removeSelectedProduct = () => {
   };
 };
 
-export const addToCart = () => {
-  return {
-    type: ActionTypes.ADD_TO_CART,
-  };
-};
+// export const addToCart = (item) => {
+//   return {
+//     type: "ADD_TO_CART",
+//     payload: item,
+//   };
+// };
 
+// export const removeFromCart = (itemId) => {
+//   return {
+//     type: "REMOVE_FROM_CART",
+//     payload: itemId,
+//   };
+// };
+
+// export const increment = (itemId) => {
+//   return {
+//     type: "INCREMENT",
+//     payload: itemId,
+//   };
+// };
+
+// export const decrement = (itemId) => {
+//   return {
+//     type: "DECREMENT",
+//     payload: itemId,
+
+//   };
+// };
+
+// export const checkout = (itemId) => {
+//   return {
+//     type: "CHECKOUT",
+//     payload: itemId,
+
+//   };
+// };
+
+export const addToCart = (product) => ({
+  type: "ADD_TO_CART",
+  payload: product,
+});
+
+export const removeFromCart = (productId) => ({
+  type: "REMOVE_FROM_CART",
+  payload: productId,
+});
+
+export const incrementQuantity = (productId) => ({
+  type: "INCREMENT_QUANTITY",
+  payload: productId,
+});
+
+export const decrementQuantity = (productId) => ({
+  type: "DECREMENT_QUANTITY",
+  payload: productId,
+});
+
+
+// export const quantity = (productId) => ({
+//   type: "QUANTITY",
+//   payload: productId,
+// });
