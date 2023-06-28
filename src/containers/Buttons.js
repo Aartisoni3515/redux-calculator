@@ -24,7 +24,7 @@ const Buttons = ({ id, title, image, price, category }) => {
   const handleDecrement = (productId) => {
     dispatch(decrementQuantity(productId));
   };
-  const quantity = data.cartItems.map((product) => product.quantity);
+  const quantity = data.cartItems.map((product) => product.quantity);KW
   // console.log(quantity);
   const product = { id, title, image, price, category };
 
